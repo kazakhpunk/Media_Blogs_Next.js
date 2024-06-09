@@ -9,7 +9,7 @@ export default function NewsItem  ({ id, title, body, reactions, tags, views }: 
       <div className="flex-1 space-y-5">
         <div className="text-sm text-gray-500 flex items-center space-x-2 mb-2">
           <div className='space-x-1'>
-            <span className="font-bold">Anonymous</span>
+            <span className="font-bold">Anonym</span>
             <span>about</span>
             <span className="font-bold">{tags[0]}, {tags[1]}, and {tags[2]}</span>
           </div>
