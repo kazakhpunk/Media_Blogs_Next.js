@@ -1,0 +1,31 @@
+import Image from 'next/image';
+import { News } from '../types/types';
+import React from 'react';
+
+export default function NewsItem  ({ id, title, body, likes, dislikes, tags, views }: News ) {
+  return (
+    <div className="bg-white shadow rounded-lg p-2 flex items-start mb-10">
+      <div className="flex-1 space-y-5">
+        <div className="text-sm text-gray-500 flex items-center space-x-2 mb-2">
+          <div className='space-x-1'>
+            <span className="font-bold">Authors name</span>
+            <span>about</span>
+            <span className="font-bold">{tags}</span>
+          </div>
+          <span>|</span>
+          <span>7 July</span>
+        </div>
+        <h2 className="text-2xl font-bold mb-2">{title}</h2>
+        <p className="text-gray-600 mb-4">{body}</p>
+        <div className="pt-10 text-sm text-gray-500 flex items-center space-x-2">
+          <span className="bg-gray-200 px-2 py-1 rounded">Java Script</span>
+          <span>|</span>
+          <span>12 min read</span>
+        </div>
+      </div>
+      <div className="flex-shrink-0 ml-8">
+        <Image className="h-[265px] w-[265px] object-cover" src={imageUrl} alt="News Image" width={265} height={265} />
+      </div>
+    </div>
+  );
+}
