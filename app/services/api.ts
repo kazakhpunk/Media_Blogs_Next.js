@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useAuth } from '@/context/AuthContext';
 
 const instance = axios.create({
 	baseURL: 'https://dummyjson.com',
@@ -9,38 +10,16 @@ const instance = axios.create({
 	},
 });
 
-// instance.interceptors.request.use(
-// 	config => {
-// 		let token;
-// 		if (typeof window !== 'undefined') {
-// 			token = localStorage.getItem('authToken');
-// 		}
-
-// 		if (token) {
-// 			config.headers['Authorization'] = `Bearer ${token}`;
-// 		}
-// 		return config;
-// 	},
-// 	error => {
-// 		return Promise.reject(error);
-// 	}
-// );
-
-// instance.interceptors.response.use(
-// 	response => {
-// 		return response;
-// 	},
-// 	error => {
-// 		console.error('API error:', error);
-// 		return Promise.reject(error);
-// 	}
-// );
-
-// export default instance;
-
-
-
-
+instance.interceptors.request.use(
+	config => {
+		const token = localStorage.getItem('token');
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	},
+	error => Promise.reject(error)
+);
 
 export const getPosts = async () => {
 	try {
@@ -51,6 +30,18 @@ export const getPosts = async () => {
 		throw error;
 	}
 };
+
+instance.interceptors.response.use(
+	response => response,
+	error => {
+		if (error.response) {
+			console.error('API error:', error.response.data);
+		} else {
+			console.error('Network error:', error.message);
+		}
+		return Promise.reject(error);
+	}
+);
 
 export const getPost = async (id: number) => {
 	try {

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { News } from '../types/types';
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { deletePost } from '../services/api'
 
 export default function NewsItem  ({ id, title, body, reactions, tags, views }: News ) {
   return (
@@ -30,7 +32,6 @@ export default function NewsItem  ({ id, title, body, reactions, tags, views }: 
         </div>
       </div>
       <div className="flex-shrink-0 ml-8">
-       {/* ? <Image className="h-[265px] w-[265px] object-cover" src={imageUrl} al="News Image" width={265} height={265} /> */}
       </div>
     </div>
   );
