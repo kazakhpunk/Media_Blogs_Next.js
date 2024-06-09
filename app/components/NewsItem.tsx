@@ -23,7 +23,7 @@ export default function NewsItem  ({ id, title, body, reactions, tags, views }: 
           <span className="bg-gray-200 px-2 py-1 rounded">{tags[1]}</span>
           <span className="bg-gray-200 px-2 py-1 rounded">{tags[2]}</span>
           <span>|</span>
-          <span className="px-2 py-1">12 min read</span>
+          <span className="px-2 py-1">1 min read</span>
           <Link href={`/posts/${id}`} className="px-2 py-1">
 						<p className='text-slate-400 cursor-pointer hover:text-black'>Read more...</p>
 					</Link>
