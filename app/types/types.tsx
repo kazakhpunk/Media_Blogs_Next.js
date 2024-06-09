@@ -8,8 +8,6 @@ export interface News {
 	views: string;
 }
 
-
-  
 export interface NewsListProps {
-    posts: News[];
+	posts: News[];
   }
